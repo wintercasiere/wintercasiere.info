@@ -1,0 +1,27 @@
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Deploy to Cloudflare Pages
+    steps:
+      - name: "Install Zola"
+        id: install-zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.14.0
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: zola build
+      - name: Publish
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: wintercasiere.info
+          directory: public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
