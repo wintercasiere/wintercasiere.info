@@ -13,7 +13,7 @@ jobs:
         with:
           tool: zola@0.14.0
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Build
         run: zola build
       - name: Publish
