@@ -1,0 +1,28 @@
+{% macro skills(category, skill_list) %}
+<p>
+    <span class="skill_category">{{ category }}</span>: {{ skill_list | join(sep=", ") }}
+</p>
+{% endmacro skills %}
+
+{% macro education(title, location, start_date, end_date) %}
+<div class="education_entry">
+    <p>{{ title }}</p>
+    <p class="entry_minor_info">{{ location }}; {{ start_date }} - {{ end_date }}</p>
+</div>
+{% endmacro education %}
+
+{% macro job(title, location, start_date, end_date, responsibilities) %}
+<div class="job_entry">
+    <p>{{ title }}</p>
+    <p class="entry_minor_info">{{ location }}; {{ start_date }} - {{ end_date }}</p>
+    <ul>
+        {% for r in responsibilities %}
+            <li>{{ r }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro job %}
+
+{% macro navlink(text, ref) %}
+<a href={{ ref }} class="navlink">{{ text }}</a>
+{% endmacro navlink %}

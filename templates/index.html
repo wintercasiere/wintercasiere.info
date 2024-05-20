@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% set electronics_skill_list = [
+    "Analog & Digital Circuits",
+    "Circuit Building & Troubleshooting",
+    "Sensors",
+    "Digital Multimeters",
+    "Oscilloscopes",
+    "Logic Analyzers",
+    "I2C",
+    "SPI",
+    "RS232",
+    "GPIB"
+] %}
+
+{% set embedded_skill_list = [
+    "Assembly",
+    "VHDL",
+    "Microcontrollers",
+    "FPGAs",
+    "Arduino"
+] %}
+
+{% set programming_skill_list = [
+    "Python",
+    "C# .NET",
+    "Lua",
+    "Typescript",
+    "Allen Bradley Ladder Logic & Structured Text",
+    "Debugging & Troubleshooting"
+] %}
+
+{% set computer_skill_list = [
+    "Microsoft Word",
+    "Microsoft Excel",
+    "Microsoft Access",
+    "Linux",
+    "CAD",
+    "HTML",
+    "CSS"
+] %}
+
+<div class="resume">
+    <h1 class="resume_subheading">Qualifications</h1>
+    
+    {{ macros::skills(category="Electronics skills",
+        skill_list=electronics_skill_list) }}
+    {{ macros::skills(category="Embedded skills",
+        skill_list=embedded_skill_list) }}
+    {{ macros::skills(category="Programming skills",
+        skill_list=programming_skill_list) }}
+    {{ macros::skills(category="Computer skills",
+        skill_list=computer_skill_list) }}
+
+    <h1 class="resume_subheading">Education</h1>
+
+    <div class="education">
+        {{ macros::education(
+            title="Master of Science, Systems and Laboratory Automation concentration",
+            location="Appalachian State University, Boone, NC",
+            start_date="August 2022",
+            end_date="May 2024")}}
+
+        {{ macros::education(
+            title="Bachelor of Physics, Astronomy concentration, Mathematics minor",
+            location="Appalachian State University, Boone, NC",
+            start_date="August 2018",
+            end_date="May 2022")}}
+    </div>
+
+    <h1 class="resume_subheading">Work Experience</h1>
+
+    <div class="jobs">
+        {{ macros::job(
+            title="Graduate Physics Laboratory Assistant",
+            location="Appalachian State University, Boone, NC",
+            start_date="August 2022",
+            end_date="May 2024",
+            responsibilities=[
+                "Introduced students to various laboratory equipment",
+                "Demonstrated laboratory procedure and data collection and recording to students",
+                "Assisted students with introductory physics labs",
+                "Graded laboratory reports"
+            ]
+        )}}
+
+        {{ macros::job(
+            title="Undergraduate Physics Laboratory Assistant",
+            location="Appalachian State University, Boone, NC",
+            start_date="January 2020",
+            end_date="May 2022",
+            responsibilities=[
+                "Assisted students with introductory physics labs",
+                "Suggested grades for physics homework"
+            ]
+        )}}
+    </div>
+</div>
+
+
+{% endblock content %}
